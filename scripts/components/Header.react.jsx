@@ -2,8 +2,11 @@ var React = require('react');
 
 var Header = React.createClass({
   render: function() {
-    var rightNav = 
-    (
+    var userLinks = this.props.isLoggedIn ? (
+      <div className="user-links">
+        <a href='#' onClick={this.logout}>Logout</a>
+      </div>
+    ) : (
       <div className="user-links">
         Login
       </div>
@@ -13,7 +16,7 @@ var Header = React.createClass({
       <header>
         <div className="well">
           <a href="#"><strong>ReactNotes</strong></a>
-          {rightNav}
+          {userLinks}
         </div>
       </header>
     );

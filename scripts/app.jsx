@@ -1,4 +1,4 @@
 var React = require('react');
-var App = require('./components/App.react.jsx');
+var NotesApp = require('./components/NotesApp.react.jsx');
   
-React.render(<App/>, document.getElementById('content'));
+React.render(<NotesApp/>, document.getElementById('content'));

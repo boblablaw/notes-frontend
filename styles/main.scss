@@ -47,3 +47,38 @@ a:link, a:visited, a:hover, a:active {
   overflow: hidden;
   overflow-y: scroll;
 }
+
+.note {
+  list-style: none;
+  padding: 10px;
+  margin-top: 10px;
+  font-family: 'Raleway', sans-serif;
+  border-bottom: 1px solid black;
+}
+
+.note__title {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: rem-calc(24);
+  a {
+    color: black;
+  }
+}
+
+.note__body {
+  font-weight: 400;
+  font-size: rem-calc(14);
+  color: #333;
+  font-style: italic;
+}
+
+.note__user {
+  font-weight: 400;
+  font-size: rem-calc(12);
+  color: #2E8BA9;
+}
+
+.note__date {
+  color: #aaa;
+  font-size: rem-calc(12);
+}
