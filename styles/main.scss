@@ -1,0 +1,49 @@
+$highlight_color: #2dbe60;
+
+body {
+  font-family: Oxygen, Helvetica, Arial, sans-serif;
+}
+.container {
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.col-xs-12 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+header .well {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  .user-links {
+    float: right;
+    color: #ccc;
+  }
+}
+h1, h2, h3, h4, h5 {
+  font-family: Merriweather;
+  font-weight: 300;
+  color: $highlight_color;
+}
+a:link, a:visited, a:hover, a:active {
+  color: $highlight_color;
+}
+
+#welcome {
+  h1 {
+    color: $highlight_color
+  }
+  main {
+    margin: 0 auto;
+    width: 360px;
+  }
+}
+
+#sidebar {
+  position: absolute;
+  width: 95%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
