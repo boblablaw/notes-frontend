@@ -43,7 +43,6 @@ NoteStore.dispatchToken = NotesAppDispatcher.register(function(payload) {
   var action = payload.action;
 
   switch(action.type) {
-    
     case ActionTypes.RECEIVE_NOTES:
       _notes = action.json.notes;
       NoteStore.emitChange();

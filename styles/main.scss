@@ -43,42 +43,93 @@ a:link, a:visited, a:hover, a:active {
 
 #sidebar {
   position: absolute;
+  padding-left: 1em;
   width: 95%;
   overflow: hidden;
   overflow-y: scroll;
 }
 
-.note {
+.notes {
   list-style: none;
-  padding: 10px;
-  margin-top: 10px;
-  font-family: 'Raleway', sans-serif;
-  border-bottom: 1px solid black;
+  margin-top: 1em;
+  padding: 0;
+  width: 100%;
+  color: #999;
+  li {
+    border-top: 1px solid #ddd;
+    padding: 1em;
+    height: 100px;
+    font-size: 90%;
+    cursor: pointer;
+    overflow: hidden;
+    &:first-of-type {
+      border-top: none;
+    }
+    &:hover {
+      background-color: $highlight_color;
+      .note__title {
+        color: black;
+      }
+      .note__body {
+        color: black;
+      }
+    }
+    .note__title {
+      color: $highlight_color;
+      font-family: Merriweather;
+      font-size: 120%;
+      font-weight: 300;
+    }
+    .note__body {
+      height: 40px;
+      overflow: hidden;
+    }
+    .note__date {
+      color: black;
+      font-size: rem-calc(12);
+    }
+  }
 }
-
-.note__title {
-  text-decoration: none;
-  font-weight: 700;
-  font-size: rem-calc(24);
-  a {
-    color: black;
+.card {
+  margin-bottom: 1em;
+  padding: 20px;
+  font-family: Merriweather;
+  ul {
+    margin-bottom: 0;
   }
 }
 
-.note__body {
-  font-weight: 400;
-  font-size: rem-calc(14);
-  color: #333;
-  font-style: italic;
+.card--login {
+  margin-top: 20px;
 }
 
-.note__user {
-  font-weight: 400;
-  font-size: rem-calc(12);
-  color: #2E8BA9;
+.card--login__field {
+  label {
+  }
+  input {
+    border-width: 0px;
+    border-left: 4px solid #c2c2c2;
+    box-shadow: none;
+  }
 }
 
-.note__date {
-  color: #aaa;
-  font-size: rem-calc(12);
+.card--login__submit {
+  width: 100%;
+  margin: 0;
+  margin-top: 10px;
+}
+
+#new_user {
+  input[type="text"],
+  input[type="password"] {
+    width: 300px;
+    font-size: 120%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 0.25em;
+  }
+}
+
+span.login {
+  margin-left: 1em;
 }

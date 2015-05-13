@@ -44,9 +44,12 @@ var NotesSidebar = React.createClass({
 });
 
 var NoteItem = React.createClass({
+  handleClick: function(event) {
+    alert('clicked!')
+  },
   render: function() {
     return (
-      <li className="note">
+      <li onClick={this.handleClick}>
         <div className="note__title">{this.props.note.title}</div>
         <div className="note__body">{this.props.note['abstract']}...</div>
         <span className="note__date">{timeago(this.props.note.created_at)}</span>
@@ -58,7 +61,7 @@ var NoteItem = React.createClass({
 var NotesList = React.createClass({
   render: function() {
     return (
-      <ul className="large-8 medium-10 small-12 small-centered columns well">
+      <ul className="notes">
         {this.props.notes.map(function(note, index){
           return <NoteItem note={note} key={"note-" + index}/>
         })}
