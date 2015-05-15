@@ -3,6 +3,8 @@ var WebAPIUtils = require('../../utils/WebAPIUtils.js');
 var NoteStore = require('../../stores/NoteStore.react.jsx');
 var ErrorNotice = require('../../components/common/ErrorNotice.react.jsx');
 var NoteActionCreators = require('../../actions/NoteActionCreators.react.jsx');
+var Router = require('react-router');
+var Link = Router.Link;
 var timeago = require('timeago');
 
 var NotesSidebar = React.createClass({
@@ -43,17 +45,19 @@ var NotesSidebar = React.createClass({
   }
 });
 
-var NoteItem = React.createClass({
-  handleClick: function(event) {
-    alert('clicked!')
-  },
+var Item = React.createClass({
   render: function() {
+  var params = { noteId: this.props.note.id };
     return (
-      <li onClick={this.handleClick}>
-        <div className="note__title">{this.props.note.title}</div>
-        <div className="note__body">{this.props.note['abstract']}...</div>
-        <span className="note__date">{timeago(this.props.note.created_at)}</span>
+      <span className="notes">
+        <Link to="note" params={params}>
+        <li>
+          <div className="note-title">{this.props.note.title}</div>
+          <div className="note-body">{this.props.note['abstract']}...</div>
+          <span className="note-date">{timeago(this.props.note.created_at)}</span>
       </li>
+        </Link>
+      </span>
     );
   }
 });
@@ -63,7 +67,7 @@ var NotesList = React.createClass({
     return (
       <ul className="notes">
         {this.props.notes.map(function(note, index){
-          return <NoteItem note={note} key={"note-" + index}/>
+          return <Item note={note} key={"note-" + index}/>
         })}
       </ul>
     );

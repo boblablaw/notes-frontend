@@ -15,29 +15,36 @@ body {
 }
 
 header .well {
+  padding-left: 2em;
   padding-top: 5px;
   padding-bottom: 5px;
   .user-links {
     float: right;
+    padding-right: 1em;
     color: #ccc;
   }
+  .user-name {
+    padding: 1em;
+  }
 }
+
 h1, h2, h3, h4, h5 {
   font-family: Merriweather;
   font-weight: 300;
   color: $highlight_color;
 }
+
 a:link, a:visited, a:hover, a:active {
   color: $highlight_color;
 }
 
-#welcome {
-  h1 {
-    color: $highlight_color
-  }
-  main {
-    margin: 0 auto;
-    width: 360px;
+i.fa-trash-o {
+  color: #ccc;
+  font-size: 150%;
+  vertical-align: middle;
+  margin-left: 1em;
+  &:hover {
+    color: #999;
   }
 }
 
@@ -66,30 +73,30 @@ a:link, a:visited, a:hover, a:active {
       border-top: none;
     }
     &:hover {
+      color: white;
       background-color: $highlight_color;
-      .note__title {
-        color: black;
-      }
-      .note__body {
-        color: black;
+      .note-title, .note-body, .note-date {
+        color: white;
+        text-decoration: none;
       }
     }
-    .note__title {
-      color: $highlight_color;
+    .note-title {
+      color: black;
       font-family: Merriweather;
       font-size: 120%;
       font-weight: 300;
     }
-    .note__body {
-      height: 40px;
+    .note-body {
+      height: 45px;
+      color: #999;
       overflow: hidden;
     }
-    .note__date {
-      color: black;
-      font-size: rem-calc(12);
+    .note-date {
+      color: #999;
     }
   }
 }
+
 .card {
   margin-bottom: 1em;
   padding: 20px;
@@ -104,12 +111,16 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .card--login__field {
+  font-family: Merriweather;
+  font-weight: 500;
+  font-size: 90%;
   label {
   }
   input {
     border-width: 0px;
     border-left: 4px solid #c2c2c2;
     box-shadow: none;
+    width: 100%;
   }
 }
 
@@ -119,17 +130,9 @@ a:link, a:visited, a:hover, a:active {
   margin-top: 10px;
 }
 
-#new_user {
-  input[type="text"],
-  input[type="password"] {
-    width: 300px;
-    font-size: 120%;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    padding: 0.25em;
-  }
-}
-
 span.login {
+  font-family: Merriweather;
+  font-weight: 500;
+  font-size: 90%;
   margin-left: 1em;
 }

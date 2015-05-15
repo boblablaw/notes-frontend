@@ -10,6 +10,7 @@ var CHANGE_EVENT = 'change';
 // a 'remember me' using localStorage
 var _accessToken = sessionStorage.getItem('accessToken');
 var _email = sessionStorage.getItem('email');
+var _username = sessionStorage.getItem('username');
 var _errors = [];
 
 var SessionStore = assign({}, EventEmitter.prototype, {
@@ -39,6 +40,10 @@ var SessionStore = assign({}, EventEmitter.prototype, {
 
   getErrors: function() {
     return _errors;
+  },
+
+  getUsername: function() {
+    return _username;
   }
 });
 
@@ -50,9 +55,11 @@ SessionStore.dispatchToken = NotesAppDispatcher.register(function(payload) {
       if (action.json && action.json.access_token) {
         _accessToken = action.json.access_token;
         _email = action.json.email;
+        _username = action.json.username;
         // Token will always live in the session, so that the API can grab it with no hassle
         sessionStorage.setItem('accessToken', _accessToken);
         sessionStorage.setItem('email', _email);
+        sessionStorage.setItem('username', _username);
       }
       if (action.errors) {
         _errors = action.errors;
@@ -65,6 +72,7 @@ SessionStore.dispatchToken = NotesAppDispatcher.register(function(payload) {
       _email = null;
       sessionStorage.removeItem('accessToken');
       sessionStorage.removeItem('email');
+      sessionStorage.removeItem('username');
       SessionStore.emitChange();
       break;
 

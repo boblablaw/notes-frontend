@@ -15,6 +15,9 @@ var NotesAppDispatcher = assign(new Dispatcher(), {
   },
 
   handleViewAction: function(action) {
+    // Dirty hack to stop error message
+    if(NotesAppDispatcher.isDispatching()==true) { return; }
+
     var payload = {
       source: PayloadSources.VIEW_ACTION,
       action: action

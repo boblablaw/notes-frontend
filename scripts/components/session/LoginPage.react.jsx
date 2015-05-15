@@ -40,16 +40,18 @@ var LoginPage = React.createClass({
             <form onSubmit={this._onSubmit}>
               <div className="card--login__field">
                 <p>
-                  <label name="email">Email</label>
+                  <label name="email">Email</label><br />
                   <input type="text" name="email" ref="email" /> 
                 </p>
               </div>
               <div className="card--login__field">
-                <label name="password">Password</label>
-                <input type="password" name="password" ref="password" />
+                <p>
+                  <label name="password">Password</label><br />
+                  <input type="password" name="password" ref="password" />
+                </p>
               </div>
               <button type="submit" className="btn btn-default">Sign In</button>
-              <span className ="login">  Dont have an account? Sign Up</span>
+              <span className ="login"> Don't have an account? Sign Up!</span>
             </form>
           </div>
         </div>

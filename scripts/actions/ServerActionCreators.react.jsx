@@ -22,14 +22,14 @@ module.exports = {
 
   receiveNote: function(json) {
     NotesAppDispatcher.handleServerAction({
-      type: ActionTypes.RECEIVE_STORY,
+      type: ActionTypes.RECEIVE_NOTE,
       json: json
     });
   },
   
   receiveCreatedNote: function(json, errors) {
     NotesAppDispatcher.handleServerAction({
-      type: ActionTypes.RECEIVE_CREATED_STORY,
+      type: ActionTypes.RECEIVE_CREATED_NOTE,
       json: json,
       errors: errors
     });
