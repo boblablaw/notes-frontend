@@ -10,7 +10,7 @@ function getStateFromStores() {
   return {
     isLoggedIn: SessionStore.isLoggedIn(),
     email: SessionStore.getEmail(),
-    username: SessionStore.getUsername()
+    username: SessionStore.getUsername(),
   };
 }
 
