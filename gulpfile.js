@@ -19,6 +19,7 @@ var gulp = require('gulp'),
     del = require('del'),
     notify = require('gulp-notify'),
     browserSync = require('browser-sync'),
+    formsy = require('formsy-react'),
     reload = browserSync.reload,
     path = {
       jsx: './scripts/app.jsx',

@@ -1,6 +1,7 @@
 var React = require('react');
 var Header = require('../components/Header.react.jsx');
 var SessionStore = require('../stores/SessionStore.react.jsx');
+var NotesPage = require('../components/notes/NotesPage.react.jsx');
 var NoteItem = require('../components/notes/NoteItem.react.jsx');
 var NotesSidebar = require('../components/notes/NotesSidebar.react.jsx');
 var LoginPage = require('../components/session/LoginPage.react.jsx');
@@ -27,10 +28,6 @@ var NotesApp = React.createClass({
     SessionStore.removeChangeListener(this._onChange);
   },
 
-  contextTypes: {
-    router: React.PropTypes.func.isRequired
-  },
-
   _onChange: function() {
     this.setState(getStateFromStores());
   },
@@ -49,9 +46,8 @@ var NotesApp = React.createClass({
         </div>
       </div>
     ) : (
-	    <LoginPage />
+	   <LoginPage />
     );
-
 
     return (
       <div className="container wrap">
