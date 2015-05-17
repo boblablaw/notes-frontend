@@ -5,7 +5,6 @@ var WebAPIUtils = require('../utils/WebAPIUtils.js');
 var ActionTypes = NotesAppConstants.ActionTypes;
 
 module.exports = {
-
   signup: function(email, username, password, passwordConfirmation) {
     NotesAppDispatcher.handleViewAction({
       type: ActionTypes.SIGNUP_REQUEST,

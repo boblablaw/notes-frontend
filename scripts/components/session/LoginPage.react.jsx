@@ -5,6 +5,7 @@ var ErrorNotice = require('../../components/common/ErrorNotice.react.jsx');
 var Router = require('react-router');
 var Link = Router.Link;
 var Formsy = require('formsy-react');
+var SignupPage = require('../../components/session/SignupPage.react.jsx');
 
 var LoginForm = React.createClass({
   getInitialState: function() {
@@ -19,7 +20,7 @@ var LoginForm = React.createClass({
     this.setState({canSubmit: false});
   },
 
-  submit: function(model) {
+  _onSubmit: function(model) {
     this.setState({ errors: [] });
     var email = model.email;
     var password = model.password;
@@ -28,7 +29,8 @@ var LoginForm = React.createClass({
 
   render: function () {
     return (
-      <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
+      <Formsy.Form onValidSubmit={this._onSubmit} onValid={this.enableButton} onInvalid={this.disableButton}>
+        <h3>Sign In</h3>
         <div className="card--login__field">
           <p>
             <label name="email">Email</label>
@@ -45,7 +47,7 @@ var LoginForm = React.createClass({
         </div>
         <button type="submit" disabled={!this.state.canSubmit} className="btn btn-default">Submit</button>
         <span className="login">
-          Don't have an account? <Link to="signup">Sign up!</Link>
+        Don't have an account? Sign Up!
         </span>
       </Formsy.Form>
     );
@@ -111,22 +113,13 @@ var LoginPage = React.createClass({
     this.setState({ errors: SessionStore.getErrors() });
   },
 
-  _onSubmit: function(e) {
-    e.preventDefault();
-    this.setState({ errors: [] });
-    var email = this.refs.email.getDOMNode().value;
-    var password = this.refs.password.getDOMNode().value;
-    SessionActionCreators.login(email, password);
-  },
-
   render: function() {
     var errors = (this.state.errors.length > 0) ? <ErrorNotice errors={this.state.errors}/> : <div></div>;
     return (
       <div>
         {errors}
           <div className="card card--login col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4">
-            <h3>Sign In</h3>
-            <LoginForm/>
+            <LoginForm />
           </div>
       </div>
     );

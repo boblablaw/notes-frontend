@@ -18,16 +18,14 @@ body {
 }
 
 header .well {
-  padding-left: 2em;
   padding-top: 5px;
   padding-bottom: 5px;
   .user-links {
     float: right;
-    padding-right: 1em;
     color: #ccc;
   }
   .user-name {
-    padding: 1em;
+    padding: 10px;
   }
 }
 
@@ -146,7 +144,6 @@ span.login {
 
 .note-item {
   font-family: Merriweather;
-
   .note-item__title {
     text-decoration: none;
     font-weight: bolder;
@@ -179,6 +176,38 @@ span.login {
     list-style: none;
     margin: 0;
   }
+}
+
+.new-note {
+  margin-bottom: 20px;
+}
+
+.new-note__title {
+  input {
+    font-family: Merriweather;
+    border: none;
+    padding-left: 5px;
+    box-shadow: none;
+    border-bottom: 2px solid #ccc;
+    width: 98%;
+    height: 30px;
+    font-size: 120%;
+  }
+}
+
+.new-note__body {
+  textarea {
+    font-family: Merriweather;
+    padding-left: 5px;
+    border: none;
+    border-top: 2px solid #ccc;
+    box-shadow: none;
+    height: 500px;
+    width: 98%;
+  }
+}
+.new-note__submit {
+
 }
 
 /* Force scrollbars visible on Mac */

@@ -5,6 +5,8 @@ var NotesPage = require('../components/notes/NotesPage.react.jsx');
 var NoteItem = require('../components/notes/NoteItem.react.jsx');
 var NotesSidebar = require('../components/notes/NotesSidebar.react.jsx');
 var LoginPage = require('../components/session/LoginPage.react.jsx');
+var SignupPage = require('../components/session/SignupPage.react.jsx');
+var RouteActionCreators = require('../actions/RouteActionCreators.react.jsx');
 var RouteHandler = require('react-router').RouteHandler;
 
 function getStateFromStores() {
@@ -33,25 +35,15 @@ var NotesApp = React.createClass({
   },
 
   render: function() {
-  var mainPage = this.state.isLoggedIn ? (
-      <div className="container wrap">
-        <div className="container">
-          <div className="col-xs-4">
-          <button className="new-note btn btn-default"><i className="fa fa-plus-circle"></i> New Note</button>
-            <div id="sidebar"><NotesSidebar/></div>
-          </div>
-          <div className="col-xs-8">
-            <div><RouteHandler/></div>
-          </div>
-        </div>
-      </div>
+    var mainPage = this.state.isLoggedIn ? (
+      <NotesPage />
     ) : (
-	   <LoginPage />
+      <LoginPage />
     );
 
     return (
       <div className="container wrap">
-        <div className="row">
+        <div>
           <Header
             isLoggedIn={this.state.isLoggedIn}
             email={this.state.email}

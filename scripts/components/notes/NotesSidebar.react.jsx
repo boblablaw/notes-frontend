@@ -49,15 +49,15 @@ var Item = React.createClass({
   render: function() {
   var params = { noteId: this.props.note.id };
     return (
-      <span className="notes">
-        <li key={this.props.note.title}>
-          <Link to="note" params={params}>
+      <div className="notes">
+        <Link to="note" params={params}>
+          <li>
             <div className="note-title">{this.props.note.title}</div>
             <div className="note-body">{this.props.note['abstract']}...</div>
             <span className="note-date">{timeago(this.props.note.created_at)}</span>
-          </Link>
-        </li>
-      </span>
+          </li>
+        </Link>
+      </div>
     );
   }
 });

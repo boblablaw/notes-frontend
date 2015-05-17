@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
 var SessionActionCreators = require('../actions/SessionActionCreators.react.jsx');
+var Index = require('../components/notes/Index.react.jsx');
 
 var Header = React.createClass({
   propTypes: {
@@ -28,7 +29,7 @@ var Header = React.createClass({
     return (
       <header>
         <div className="well">
-          <a href="#"><strong>ReactNotes</strong></a>
+        <a href="#"><strong>ReactNotes</strong>{Index}</a>
           {userLinks}
         </div>
       </header>

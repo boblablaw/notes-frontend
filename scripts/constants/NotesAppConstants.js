@@ -20,6 +20,9 @@ module.exports = {
     LOGIN_REQUEST: null,
     LOGIN_RESPONSE: null,
 
+    // Routes
+    REDIRECT: null,
+
     // Notes
     LOAD_NOTES: null,
     RECEIVE_NOTES: null,

@@ -30,7 +30,6 @@ var NoteItem = React.createClass({
 
   componentWillReceiveProps: function () {
     NoteActionCreators.loadNote(this.getParams().noteId);
-
   },
 
   _onChange: function() {
@@ -42,9 +41,9 @@ var NoteItem = React.createClass({
 
   render: function() {
     return (
-      <div className="row">
-      <div className="note__title">{this.state.note.title}</div>
-        <div className="note__body">{this.state.note.body}</div>
+      <div className="note-item">
+        <div className="note-item__title">{this.state.note.title}</div>
+        <div className="note-item__body">{this.state.note.body}</div>
       </div>
     );
   }
