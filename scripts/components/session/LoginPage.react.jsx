@@ -34,7 +34,8 @@ var LoginForm = React.createClass({
         <div className="card--login__field">
           <p>
             <label name="email">Email</label>
-            <EmailInput
+            <FormInput
+              type="email"
               name="email"
               validations="isEmail"
               validationError="This is not a valid email" required
@@ -42,19 +43,22 @@ var LoginForm = React.createClass({
           </p>
           <p>
             <label name="password">Password</label><br />
-            <PasswordInput name="password"/>
+            <FormInput
+              type="password"
+              name="password"
+            />
           </p>
         </div>
         <button type="submit" disabled={!this.state.canSubmit} className="btn btn-default">Submit</button>
         <span className="login">
-        Don't have an account? Sign Up!
+          Don't have an account? <Link to="signup"> Sign Up!</Link>
         </span>
       </Formsy.Form>
     );
   }
 });
 
-var EmailInput = React.createClass({
+var FormInput = React.createClass({
   mixins: [Formsy.Mixin],
 
   changeValue: function (event) {
@@ -62,34 +66,22 @@ var EmailInput = React.createClass({
   },
 
   render: function () {
-    var formState = this.showRequired() ? 'required' : this.showError() ? 'error' : null;
+    var color = 'gray';
 
+    if (this.showError()) {
+      color = 'red';
+    };
+
+    var border = {
+      border: '1px solid ' + color
+    };
+
+    var formState = this.showRequired() ? 'required' : this.showError() ? 'error' : null;
     var errorMessage = this.getErrorMessage();
 
     return (
       <div className={formState}>
-        <input type="text" onChange={this.changeValue} value={this.getValue()}/>
-        <span>{errorMessage}</span>
-      </div>
-    );
-  }
-});
-
-var PasswordInput = React.createClass({
-  mixins: [Formsy.Mixin],
-
-  changeValue: function (event) {
-    this.setValue(event.currentTarget.value);
-  },
-
-  render: function () {
-    var formState = this.showRequired() ? 'required' : this.showError() ? 'error' : null;
-
-    var errorMessage = this.getErrorMessage();
-
-    return (
-      <div className={formState}>
-        <input type="password" onChange={this.changeValue} value={this.getValue()}/>
+        <input type={this.props.type ? this.props.type : 'text'} style={border} onBlur={this.changeValue}/>
         <span>{errorMessage}</span>
       </div>
     );
@@ -97,6 +89,10 @@ var PasswordInput = React.createClass({
 });
 
 var LoginPage = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.func
+  },
+
   getInitialState: function() {
     return { errors: [] };
   },

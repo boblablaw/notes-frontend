@@ -1,20 +1,20 @@
-var NotesAppDispatcher = require('../dispatcher/NotesAppDispatcher.js');
-var NotesAppConstants = require('../constants/NotesAppConstants.js');
+var Dispatcher = require('../dispatcher/Dispatcher.js');
+var Constants = require('../constants/Constants.js');
 var WebAPIUtils = require('../utils/WebAPIUtils.js');
 
-var ActionTypes = NotesAppConstants.ActionTypes;
+var ActionTypes = Constants.ActionTypes;
 
 module.exports = {
 
   loadNotes: function() {
-    NotesAppDispatcher.handleViewAction({
+    Dispatcher.handleViewAction({
       type: ActionTypes.LOAD_NOTES
     });
     WebAPIUtils.loadNotes();
   },
   
   loadNote: function(noteId) {
-    NotesAppDispatcher.handleViewAction({
+    Dispatcher.handleViewAction({
       type: ActionTypes.LOAD_NOTE,
       noteId: noteId
     });
@@ -22,13 +22,28 @@ module.exports = {
   },
 
   createNote: function(title, body) {
-    NotesAppDispatcher.handleViewAction({
+    Dispatcher.handleViewAction({
       type: ActionTypes.CREATE_NOTE,
       title: title,
       body: body
     });
     WebAPIUtils.createNote(title, body);
-  }
+  },
 
+  destroyNote: function(noteId) {
+    Dispatcher.handleViewAction({
+      type: ActionTypes.DESTROY_NOTE,
+      noteId: noteId
+    });
+    WebAPIUtils.destroyNote(noteId);
+  },
+
+  updateNote: function(noteId, title, body) {
+    Dispatcher.handleViewAction({
+      type: ActionTypes.UPDATE_NOTE,
+      noteId: noteId
+    });
+    WebAPIUtils.updateNote(noteId, title, body);
+  }
 };
 

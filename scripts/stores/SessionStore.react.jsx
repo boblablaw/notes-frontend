@@ -1,9 +1,9 @@
-var NotesAppDispatcher = require('../dispatcher/NotesAppDispatcher.js');
-var NotesAppConstants = require('../constants/NotesAppConstants.js');
+var Dispatcher = require('../dispatcher/Dispatcher.js');
+var Constants = require('../constants/Constants.js');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var ActionTypes = NotesAppConstants.ActionTypes;
+var ActionTypes = Constants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 // Load an access token from the session storage, you might want to implement
@@ -47,7 +47,7 @@ var SessionStore = assign({}, EventEmitter.prototype, {
   }
 });
 
-SessionStore.dispatchToken = NotesAppDispatcher.register(function(payload) {
+SessionStore.dispatchToken = Dispatcher.register(function(payload) {
   var action = payload.action;
 
   switch(action.type) {

@@ -1,12 +1,12 @@
-var NotesAppDispatcher = require('../dispatcher/NotesAppDispatcher.js');
-var NotesAppConstants = require('../constants/NotesAppConstants.js');
+var Dispatcher = require('../dispatcher/Dispatcher.js');
+var Constants = require('../constants/Constants.js');
 
-var ActionTypes = NotesAppConstants.ActionTypes;
+var ActionTypes = Constants.ActionTypes;
 
 module.exports = {
 
   receiveLogin: function(json, errors) {
-    NotesAppDispatcher.handleServerAction({
+    Dispatcher.handleServerAction({
       type: ActionTypes.LOGIN_RESPONSE,
       json: json,
       errors: errors
@@ -14,23 +14,39 @@ module.exports = {
   },
 
   receiveNotes: function(json) {
-    NotesAppDispatcher.handleServerAction({
+    Dispatcher.handleServerAction({
       type: ActionTypes.RECEIVE_NOTES,
       json: json
     });
   },
 
   receiveNote: function(json) {
-    NotesAppDispatcher.handleServerAction({
+    Dispatcher.handleServerAction({
       type: ActionTypes.RECEIVE_NOTE,
       json: json
     });
   },
   
+  processDeletedNote: function(noteId) {
+    Dispatcher.handleServerAction({
+      type: ActionTypes.PROCESS_DELETED_NOTE,
+      noteId: noteId
+    });
+  },
+
   receiveCreatedNote: function(json, errors) {
-    NotesAppDispatcher.handleServerAction({
+    Dispatcher.handleServerAction({
       type: ActionTypes.RECEIVE_CREATED_NOTE,
       json: json,
+      errors: errors
+    });
+  },
+
+  processUpdatedNote: function(json, noteId, errors) {
+    Dispatcher.handleServerAction({
+      type: ActionTypes.PROCESS_UPDATED_NOTE,
+      json: json,
+      noteId: noteId,
       errors: errors
     });
   }

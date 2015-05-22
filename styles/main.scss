@@ -39,22 +39,13 @@ a:link, a:visited, a:hover, a:active {
   color: $highlight_color;
 }
 
-i.fa-trash-o {
-  color: #ccc;
-  font-size: 150%;
-  vertical-align: middle;
-  margin-left: 1em;
-  &:hover {
-    color: #999;
-  }
-}
-
 #sidebar {
   position: absolute;
   padding-left: 1em;
   width: 95%;
   overflow: hidden;
   overflow-y: scroll;
+  height: 600px;
 }
 
 .notes {
@@ -156,7 +147,7 @@ span.login {
     border-top: 1px solid #ddd;
     padding-top: 1em;
     font-weight: 400;
-    height: 500px;
+    height: 550px;
     color: #333;
     font-size: rem-calc(14);
     overflow: scroll;
@@ -185,13 +176,17 @@ span.login {
 .new-note__title {
   input {
     font-family: Merriweather;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 150%;
     border: none;
     padding-left: 5px;
-    box-shadow: none;
-    border-bottom: 2px solid #ccc;
     width: 98%;
     height: 30px;
-    font-size: 120%;
+    background-color: ghostwhite;
+  }
+  input:focus {
+    outline: none;
   }
 }
 
@@ -200,23 +195,25 @@ span.login {
     font-family: Merriweather;
     padding-left: 5px;
     border: none;
-    border-top: 2px solid #ccc;
+    border-top: 1px solid #ccc;
     box-shadow: none;
-    height: 500px;
+    height: 544px;
     width: 98%;
+    background-color: ghostwhite;
+    padding-top: 1em;
+  }
+  textarea:focus {
+    outline: none;
   }
 }
-.new-note__submit {
 
+.edit-note, .delete-note, .create-note, .update-note, .cancel-note {
+  width: 100px;
+  margin-right: 20px;
+  margin-top: 20px;
 }
 
-/* Force scrollbars visible on Mac */
-::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 7px;
-}
-::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+.well {
+  background: ghostwhite;
+  background-color: ghostwhite;
 }

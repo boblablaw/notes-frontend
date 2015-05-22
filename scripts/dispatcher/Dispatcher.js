@@ -1,10 +1,10 @@
-var NotesAppConstants = require('../constants/NotesAppConstants.js');
+var Constants = require('../constants/Constants.js');
 var Dispatcher = require('flux').Dispatcher;
 var assign = require('object-assign');
 
-var PayloadSources = NotesAppConstants.PayloadSources;
+var PayloadSources = Constants.PayloadSources;
 
-var NotesAppDispatcher = assign(new Dispatcher(), {
+var Dispatcher = assign(new Dispatcher(), {
 
   handleServerAction: function(action) {
     var payload = {
@@ -16,7 +16,7 @@ var NotesAppDispatcher = assign(new Dispatcher(), {
 
   handleViewAction: function(action) {
     // Dirty hack to stop error message
-    if(NotesAppDispatcher.isDispatching()==true) { return; }
+    if(Dispatcher.isDispatching()==true) { return; }
 
     var payload = {
       source: PayloadSources.VIEW_ACTION,
@@ -26,4 +26,4 @@ var NotesAppDispatcher = assign(new Dispatcher(), {
   }
 });
 
-module.exports = NotesAppDispatcher;
+module.exports = Dispatcher;

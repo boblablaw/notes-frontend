@@ -7,7 +7,7 @@ module.exports = {
   APIEndpoints: {
     LOGIN:          APIRoot + "/v1/login",
     REGISTRATION:   APIRoot + "/v1/users",
-    Notes:          APIRoot + "/v1/notes"
+    NOTES:          APIRoot + "/v1/notes"
   },
 
   PayloadSources: keyMirror({
@@ -29,6 +29,10 @@ module.exports = {
     LOAD_NOTE: null,
     RECEIVE_NOTE: null,
     CREATE_NOTE: null,
-    RECEIVE_CREATED_NOTE: null
+    DESTROY_NOTE: null,
+    UPDATE_NOTE: null,
+    RECEIVE_CREATED_NOTE: null,
+    PROCESS_DELETED_NOTE: null,
+    PROCESS_UPDATED_NOTE: null
   })
 };

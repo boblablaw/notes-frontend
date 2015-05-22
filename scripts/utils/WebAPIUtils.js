@@ -1,5 +1,5 @@
 var ServerActionCreators = require('../actions/ServerActionCreators.react.jsx');
-var NotesAppConstants = require('../constants/NotesAppConstants.js');
+var Constants = require('../constants/Constants.js');
 var request = require('superagent');
 
 function _getErrors(res) {
@@ -14,7 +14,7 @@ function _getErrors(res) {
   return errorMsgs;
 }
 
-var APIEndpoints = NotesAppConstants.APIEndpoints;
+var APIEndpoints = Constants.APIEndpoints;
 
 module.exports = {
   signup: function(email, username, password, passwordConfirmation) {
@@ -57,7 +57,7 @@ module.exports = {
   },
 
   loadNotes: function() {
-    request.get(APIEndpoints.Notes)
+    request.get(APIEndpoints.NOTES)
       .set('Accept', 'application/json')
       .set('Authorization', sessionStorage.getItem('accessToken'))
       .end(function(error, res){
@@ -69,7 +69,7 @@ module.exports = {
   },
 
   loadNote: function(noteId) {
-    request.get(APIEndpoints.Notes + '/' + noteId)
+    request.get(APIEndpoints.NOTES + '/' + noteId)
       .set('Accept', 'application/json')
       .set('Authorization', sessionStorage.getItem('accessToken'))
       .end(function(error, res){
@@ -81,7 +81,7 @@ module.exports = {
   },
 
   createNote: function(title, body) {
-    request.post(APIEndpoints.Notes)
+    request.post(APIEndpoints.NOTES)
       .set('Accept', 'application/json')
       .set('Authorization', sessionStorage.getItem('accessToken'))
       .send({ note: { title: title, body: body } })
@@ -96,6 +96,41 @@ module.exports = {
           }
         }
       });
-  }
+  },
 
+  destroyNote: function(noteId) {
+    request.del(APIEndpoints.NOTES + '/' + noteId)
+      .set('Accept', 'application/json')
+      .set('Authorization', sessionStorage.getItem('accessToken'))
+      .send({ note: { id: noteId } })
+      .end(function(error, res){
+        if (res) {
+          if (res.error) {
+            var errorMsgs = _getErrors(res);
+            ServerActionCreators.processDeletedNote(noteId);
+          } else {
+            json = JSON.parse(res.text);
+            ServerActionCreators.processDeletedNote(noteId);
+          }
+        }
+      });
+  },
+
+  updateNote: function(noteId, title, body) {
+    request.put(APIEndpoints.NOTES + '/' + noteId)
+      .set('Accept', 'application/json')
+      .set('Authorization', sessionStorage.getItem('accessToken'))
+      .send({ note: { title: title, body: body }})
+      .end(function(error, res){
+        if (res) {
+          if (res.error) {
+            var errorMsgs = _getErrors(res);
+            ServerActionCreators.processUpdatedNote(json)
+          } else {
+            json = JSON.parse(res.text);
+            ServerActionCreators.processUpdatedNote(json);
+          }
+        }
+      });
+  },
 };

@@ -1,13 +1,11 @@
 var React = require('react');
-var Header = require('../components/Header.react.jsx');
+var Router = require('react-router');
+var RouteHandler = Router.RouteHandler;
 var SessionStore = require('../stores/SessionStore.react.jsx');
+
+var Header = require('../components/Header.react.jsx');
+var Welcome = require('../components/Welcome.react.jsx');
 var NotesPage = require('../components/notes/NotesPage.react.jsx');
-var NoteItem = require('../components/notes/NoteItem.react.jsx');
-var NotesSidebar = require('../components/notes/NotesSidebar.react.jsx');
-var LoginPage = require('../components/session/LoginPage.react.jsx');
-var SignupPage = require('../components/session/SignupPage.react.jsx');
-var RouteActionCreators = require('../actions/RouteActionCreators.react.jsx');
-var RouteHandler = require('react-router').RouteHandler;
 
 function getStateFromStores() {
   return {
@@ -17,11 +15,11 @@ function getStateFromStores() {
   };
 }
 
-var NotesApp = React.createClass({
+var Main = React.createClass({
   getInitialState: function() {
     return getStateFromStores();
   },
-  
+
   componentDidMount: function() {
     SessionStore.addChangeListener(this._onChange);
   },
@@ -38,7 +36,7 @@ var NotesApp = React.createClass({
     var mainPage = this.state.isLoggedIn ? (
       <NotesPage />
     ) : (
-      <LoginPage />
+      <Welcome />
     );
 
     return (
@@ -57,4 +55,4 @@ var NotesApp = React.createClass({
   }
 });
 
-module.exports = NotesApp;
+module.exports = Main;
